@@ -11,23 +11,56 @@ openai.api_key = os.getenv("OPENAI_API_KEY")
 
 def analyze_resume(resume_text, job_description):
     prompt = f"""
-I want you to act as a professional resume reviewer with expertise in Applicant Tracking Systems (ATS) and hiring best practices. I will provide you with a resume and a job description.
+I want you to act as a professional resume reviewer with expertise in Applicant Tracking Systems (ATS) and modern hiring practices. I will provide you with a resume (or CV) and a job description.
 
 Your tasks are:
 
-1. **Evaluate ATS Compatibility**  
-Compare the resume to the job description and assign a performance score between **0% and 100%** based on keyword alignment, job title match, required skills, and formatting readability for ATS.
+🔎 1. Evaluate Resume Performance
+Analyze how well the resume matches the job description.
 
-2. **If the score is below 75%**, provide specific, actionable suggestions to improve it. Your suggestions should include:
-- **Keywords and phrases to add or emphasize** from the job description.
-- **Suggestions for quantifiable achievements** (use metrics or measurable results where possible).
-- **Structural or formatting improvements** to help ATS parsing and visual clarity.
-- **Content to remove or condense**, if it doesn’t target the role effectively.
-- Clear recommendations like: “Replace ‘supported the team’ with ‘collaborated with 4 cross-functional teams to launch X’”.
+Assign a score from 0% to 100%, based on:
 
-3. **If the score is 75% or higher**, confirm that the resume is ready to submit and suggest any final polish or enhancements to make it stand out to human recruiters.
+Keyword alignment and relevant phrasing
 
-Be direct, practical, and detailed with your feedback.
+Job title and responsibility match
+
+Required skills and qualifications
+
+Formatting clarity and ATS readability
+
+If the score is 74% or lower, say:
+
+"Your resume needs improvements to meet the job's expectations."
+
+If the score is 75% or higher, say:
+
+"Your resume is ready to send."
+Also, provide minor enhancement suggestions to improve impact for human reviewers.
+
+2. Provide Structured Feedback in This Format
+📐 Overall Structure Improvements (3 bullets)
+Give three practical, high-level layout or structural suggestions to improve organization, readability, or ATS compatibility.
+
+Keywords or Phrases to Add or Emphasize
+
+List important keywords/phrases from the job description that are missing or underused in the resume.
+
+Show 1–2 altered examples of existing resume content with those keywords added naturally.
+
+Quantifiable Achievements Suggestions (2 ideas)
+Suggest two areas where the user could add specific metrics, percentages, or measurable impact to enhance their accomplishments.
+
+Sample Rewrites (3 examples)
+Reword 3 generic or vague phrases into more compelling, action-oriented, and job-specific alternatives.
+
+Style & Output Guidelines
+Tailor every suggestion directly to the provided resume and job description.
+
+Be practical, detailed, and actionable — no vague or generic advice.
+
+Use bullet points, bolding, and clear formatting for readability.
+
+Maintain a professional and encouraging tone.
 
 Resume:
 \"\"\"{resume_text}\"\"\"
